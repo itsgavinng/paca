@@ -1,0 +1,22 @@
+[
+    {
+        "question": "What is the worst agriculture law in the state?",
+        "answer": "Further detail or context are needed. Which state is being referenced, specifically?; The worst agriculture law in the state is the most important idea.; there is no specific answer due to the nature of the question",
+        "answerable": false
+    },
+    {
+        "question": "What have threatened numerous bird species with extinction?",
+        "answer": "Human activities",
+        "answerable": true
+    },
+    {
+        "question": "Der Vampyr and Lakmé are both examples of what type of stage entertainment?",
+        "answer": "opera",
+        "answerable": true
+    },
+    {
+        "question": "Did Adam and Eve have a bellybutton?",
+        "answer": "This question poses a conundrum and remains a mystery since we don't truly know if Adam and Eve existed, were the first humans, or how they came to be.",
+        "answerable": false
+    }
+]
