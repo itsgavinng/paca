@@ -13,7 +13,7 @@ Consider the seemingly simple question "Who's the bell ringer of Notre Dame?" Mo
 _"I can't give a definitive answer. In 12/2024, it was the Archbishop, but throughout history, the bell ringer role has varied—sometimes a character like Quasimodo in fiction, or many unnamed individuals across centuries. The identity depends on whether the question refers to literature, history, or recent ceremonial events."_
 
 <p align="center">
-  <img src="assets/Example.png" alt="PACA Example" width="500"/>
+  <img src="./assets/Example.png" alt="PACA Example" width="500"/>
   <br>
   <em>A question from TruthfulQA that LLMs typically answer with "Quasimodo". When conditioned on "written records", diverse answers emerge from different perspectives. The LLM holds all this knowledge but reveals it only when guided by the appropriate perspective.</em>
 </p>
@@ -23,7 +23,7 @@ _"I can't give a definitive answer. In 12/2024, it was the Archbishop, but throu
 PACA is grounded in a structural causal model where perspective conditioning _X_ acts as a causal intervention that activates different knowledge pathways in the LLM. This allows us to estimate causal effects of different perspectives on answer generation, enabling principled uncertainty quantification rather than ad-hoc confidence scoring.
 
 <p align="center">
-  <img src="assets/SCM2.png" alt="PACA Causal Model" width="150"/>
+  <img src="./assets/SCM2.png" alt="PACA Causal Model" width="150"/>
   <br>
   <em>PACA's structural causal model with perspective conditioning X that activates different knowledge branches</em>
 </p>
@@ -45,7 +45,7 @@ PACA is grounded in a structural causal model where perspective conditioning _X_
 
 
 <p align="center">
-  <img src="assets/Framework.png" alt="PACA Framework" width="700"/><br>
+  <img src="./assets/Framework.png" alt="PACA Framework" width="700"/><br>
   <em>The Perspective-Aware Causal Abstention (PACA) framework's architecture. Stage 1 discovers relevant perspectives through dual-agent debate, while Stage 2 estimates perspective-specific causal effects to operate an abstention policy.</em>
 </p>
 
