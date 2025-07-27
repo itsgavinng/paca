@@ -47,7 +47,7 @@ def process_question_with_retry(question_data: Dict[str, Any], model: str, max_r
         model: Model to use for processing
         max_retries: Maximum number of retry attempts
         t: Number of debate rounds for Stage 1
-        k: Number of chains of thought per perspective for Stage 2
+        k: Number of chains of thought per aspect for Stage 2
         n: Number of answer samples for Stage 2
         
     Returns:
@@ -67,8 +67,8 @@ def process_question_with_retry(question_data: Dict[str, Any], model: str, max_r
         try:
             print(f"\n🚀 Attempt {attempt + 1}/{max_retries}")
             
-            # Stage 1: Perspective Discovery
-            print("\n" + "🔍 STAGE 1: PERSPECTIVE DISCOVERY")
+            # Stage 1: Aspect Discovery
+            print("\n" + "🔍 STAGE 1: ASPECT DISCOVERY")
             stage1_result = run_stage_1(
                 question=question,
                 dagent_model=model,
@@ -78,18 +78,16 @@ def process_question_with_retry(question_data: Dict[str, Any], model: str, max_r
             )
             
             print(f"✅ Stage 1 Complete - Dimension: {stage1_result.best_dimension.name}")
-            print(f"   Perspectives: {[p.value for p in stage1_result.perspectives]}")
+            print(f"   Aspects: {[p.value for p in stage1_result.aspects]}")
             
-            # Stage 2: Perspective Resolution
-            print("\n" + "🎯 STAGE 2: PERSPECTIVE RESOLUTION")
+            # Stage 2: Aspect Resolution
+            print("\n" + "🎯 STAGE 2: ASPECT RESOLUTION")
             stage2_result = run_stage_2(
                 question=question,
                 stage1_result=stage1_result,
                 model=model,
                 k=k,  # chains of thought per perspective
                 n=n,  # answer samples
-                theta_max=0.5,  # Type-1 abstention threshold
-                rho_null=0.3   # Type-2 abstention threshold
             )
 
             
@@ -100,7 +98,7 @@ def process_question_with_retry(question_data: Dict[str, Any], model: str, max_r
                 "answerable": answerable,
                 "stage1_result": {
                     "dimension": stage1_result.best_dimension.name,
-                    "perspectives": [p.value for p in stage1_result.perspectives],
+                    "aspects": [p.value for p in stage1_result.aspects],
                     "weights": list(stage1_result.final_weights.values())
                 },
                 "stage2_result": {
@@ -152,7 +150,7 @@ def run_pipeline(dataset_path: str = "datasets/sample_dataset.json",
         start_index: Starting index in dataset (for resuming)
         end_index: Ending index in dataset (None for all)
         t: Number of debate rounds for Stage 1
-        k: Number of chains of thought per perspective for Stage 2
+        k: Number of chains of thought per aspect for Stage 2
         n: Number of answer samples for Stage 2
         
     Returns:
@@ -193,9 +191,7 @@ def run_pipeline(dataset_path: str = "datasets/sample_dataset.json",
         print(f"\n📊 Progress: {successful} successful, {failed} failed, {len(results)} total")
     
     # Final summary
-    print(f"\n{'🏆' * 50}")
     print("PIPELINE COMPLETE")
-    print(f"{'🏆' * 50}")
     print(f"✅ Successful: {successful}")
     print(f"❌ Failed: {failed}")
     print(f"📊 Total: {len(results)}")
